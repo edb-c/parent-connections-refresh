@@ -1,0 +1,19 @@
+{
+  "name": "parent-connections-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/edb-c/parent-connections-v2.git"
+  },
+  "author": "E.Cofresi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edb-c/parent-connections-v2/issues"
+  },
+  "homepage": "https://github.com/edb-c/parent-connections-v2#readme"
+}
