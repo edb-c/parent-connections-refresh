@@ -6,20 +6,6 @@ const { check, validationResult } = require("express-validator");
 
 const User = require("../../models/User");
 
-// @route    GET api/auth
-// @desc     
-// @access   Public
-//Making call to our database, leaving out password
-router.get('/', auth, async (req, res) => {
-    try {
-      const user = await User.findById(req.user.id).select('-password');
-      res.json(user);   //User Data from Model
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
-    }
-  });
-  
 // @route    POST api/users
 // @desc     Register user
 // @access   Public
