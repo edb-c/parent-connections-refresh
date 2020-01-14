@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from "react";
+import { connect } from 'react-redux';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
-const Register = () => {
+const Register = ({ register }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,7 +22,7 @@ const Register = () => {
     if (password !== password2) {
       console.log("Passwords do not match");
     } else {
-      console.log(formData);
+      register({ name, email, password });
     }
   };
 
@@ -92,7 +95,14 @@ const Register = () => {
   );
 };
 
-export default Register;
+Register.propTypes = {
+  register: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { register }
+)(Register);
 
 /**
  * NOTES:
