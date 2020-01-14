@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 const Landing = () => {
     return (
+      <Fragment>
         <div className="landing">
         <div className="dark-overlay landing-inner text-light">
           <div className="container">
@@ -26,6 +27,7 @@ const Landing = () => {
           </div>
         </div>
       </div>
+    </Fragment>  
     );
 };
 
