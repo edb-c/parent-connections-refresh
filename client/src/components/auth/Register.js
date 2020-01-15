@@ -1,9 +1,10 @@
 import React, { Fragment, useState } from "react";
-import { connect } from 'react-redux';
-import { register } from '../../actions/auth';
-import PropTypes from 'prop-types';
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { register } from "../../actions/auth";
+import PropTypes from "prop-types";
 
-const Register = ({ register }) => {
+const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,6 +26,10 @@ const Register = ({ register }) => {
       register({ name, email, password });
     }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -90,23 +95,24 @@ const Register = ({ register }) => {
           </div>
         </div>
       </div>
-
     </Fragment>
   );
 };
 
 Register.propTypes = {
-  register: PropTypes.func.isRequired
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
-export default connect(
-  null,
-  { register }
-)(Register);
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { register })(Register);
 
 /**
  * NOTES:
  * https://reactjs.org/docs/hooks-state.html
- * 
- * 
+ *
+ *
  */
